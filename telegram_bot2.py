@@ -3,15 +3,16 @@ import ssl
 import urllib.request
 import urllib.parse
 from multiprocessing import Process
-# from multiprocessing import Queue
 from time import sleep
 import time
 from datetime import datetime
 
-from AIDA_Bot import cycle, query_result, welcome
+from AIDA_Bot import cycle, welcome, get_session, set_session
 
-bot_id = 'yourBotID'
-owner_chat_id = 'Your_Chat_ID'
+bot_id = 'your bot id'
+owner_chat_id = 'your chat id'
+sessions = {}
+new_session = {'level': 0, 'intent': {'name': '', 'level': 0, 'slots': {}}, 'confirmation': True, 'answer': ''}
 
 
 def bot_check():
@@ -27,26 +28,26 @@ def bot_check():
             if 'A Conversational Agent to Explore Scholarly Knowledge Graphs' not in str(r):
                 print('Error! Http server down!', datetime.now())
                 msg_url = base_url + 'http_error'
-                z = urllib.request.urlopen(msg_url, context=ssl.SSLContext())
+                zr = urllib.request.urlopen(msg_url, context=ssl.SSLContext())
             elif i % 10 == 0:
                 print('Http Ok', datetime.now())
                 msg_url = base_url + 'http_ok'
-                z = urllib.request.urlopen(msg_url, context=ssl.SSLContext())
+                zr = urllib.request.urlopen(msg_url, context=ssl.SSLContext())
             if 'A Conversational Agent to Explore Scholarly Knowledge Graphs' not in str(r1):
                 print('Error! Https server down!', datetime.now())
                 msg_url = base_url + 'https_error'
-                z = urllib.request.urlopen(msg_url, context=ssl.SSLContext())
+                zr = urllib.request.urlopen(msg_url, context=ssl.SSLContext())
             elif i % 10 == 0:
                 print('Https Ok', datetime.now())
                 msg_url = base_url + 'https_ok'
-                z = urllib.request.urlopen(msg_url, context=ssl.SSLContext())
+                zr = urllib.request.urlopen(msg_url, context=ssl.SSLContext())
             time.sleep(360)
             i += 1
 
         except:
             print("An exception occurred")
             msg_url = base_url + 'Exception_error'
-            z = urllib.request.urlopen(msg_url, context=ssl.SSLContext())
+            zr = urllib.request.urlopen(msg_url, context=ssl.SSLContext())
             time.sleep(60)
 
 
@@ -68,7 +69,7 @@ def get_updates(update_id):
     except:
         print("An exception occurred")
         url3 = 'https://api.telegram.org/' + bot_id + '/sendMessage?chat_id=' + chat_id + '?text=Exception_error'
-        z = urllib.request.urlopen(url3, context=ssl.SSLContext())
+        zr = urllib.request.urlopen(url3, context=ssl.SSLContext())
         return None
 
 
@@ -82,6 +83,12 @@ if __name__ == '__main__':
             if res is not None:
                 msg_list, upd_id = res
                 for msg in msg_list:
+                    chat_id = msg['message']['chat'].get('id')
+                    session = sessions.get(chat_id)
+                    if session is None:
+                        set_session(new_session)
+                    else:
+                        set_session(session)
                     text = msg['message'].get('text')
                     if text is None:
                         text = ''
@@ -90,10 +97,10 @@ if __name__ == '__main__':
                     else:
                         cycle(text)
 
-                    chat_id = msg['message']['chat'].get('id')
-                    # print(msg)
-                    print(text, chat_id)
-                    answer = query_result.get('answer')
+                    session = get_session()
+                    sessions[chat_id] = session
+                    answer = session.get('answer')
+
                     url_answer = 'https://api.telegram.org/' + bot_id + '/sendMessage'
                     url_answer += '?chat_id=' + str(chat_id) + '&text=' + urllib.parse.quote(str(answer))
                     url_answer += '&parse_mode=html'

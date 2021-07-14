@@ -126,88 +126,6 @@ templates = {
     'DESCRIBE_CONFIRM_MSG': 'Do you want to know something about ${ins}?'
 }
 
-templates2 = {
-    'WELCOME_MSG': ['Hello! You can ask me to describe, list, or count any scholarly entity.',
-                    'Welcome, you can ask me to describe, list, or count any scholarly entity. What would you like to '
-                    'try?'],
-    'HELLO_MSG': ['Hello! What can I do for you?', 'Hi! what could i do for you?'],
-    'OK_MSG': 'Ok',
-    'HELP_MSG': [
-        'You can ask to count or list authors, papers, conferences, organizations, topics and citations or to '
-        'describe authors, conferences and organizations. Start a query with list, count or describe.',
-        'You can ask a query starting with count, list or describe.'],
-    'GOODBYE_MSG': ['Goodbye!', 'Bye!', 'See you later!'],
-    'REFLECTOR_MSG': 'You just triggered ${intent}',
-    'FALLBACK_MSG': 'Sorry, I don\'t know that. Please try again.',
-    'ERROR_MSG': 'Sorry, there was an error. Please try again.',
-
-    'HOMONYMS_MSG': 'I found different homonyms: ${msg} ',
-
-    'SUBJECT_REQUEST_MSG': 'I can count papers, authors, conferences, organizations and citations. What do you want '
-                           'me to count?',
-    'SUBJECT_WRONG_MSG': "Sorry, I can\'t count ${sub}. I can count papers, authors, conferences, organizations and "
-                         "citations. What do you prefer?",
-    'SUBJECT_REQUEST_REPROMPT_MSG': 'I can count papers, authors, conferences, organizations and citations. What do '
-                                    'you prefer?',
-    'INSTANCE_MSG': "what is the name of the ${list} whose ${sub} I should count? You can say all for the full list",
-    'INSTANCE2_MSG': "what is the name of the ${list} whose ${sub} I should count?",
-    'ITEM_MSG': "Searching for ${ins}, I got: ${msg}. To choose, say the number. Which one is correct?",
-    'INTENT_CONFIRMATION_1_MSG': "Do you want to know how many ${sub} ${prep} ${obj} are in the AIDA database?",
-    'INTENT_CONFIRMATION_2_MSG': "Do you want to know how many ${sub} ${prep} ${ins} ${obj} are in the AIDA database?",
-    'TOO_GENERIC_MSG': "Your search for ${ins} got ${results}. You need to try again and to be more specific. Could "
-                       "you tell me the exact name?",
-    'NO_RESULT_MSG': "Your search for ${ins} got no result. You need to try again. What could I search for you?",
-    'QUERY_1_MSG': "I found ${num} ${sub} ${prep} ${ins} ${obj}. You can ask to perform another query on the data "
-                   "contained in the AIDA database or ask for Help. What would you like to try?",
-    'QUERY_2_MSG': "I found ${num} different ${sub} ${prep} ${obj}. You can ask to perform another query on the data "
-                   "contained in the AIDA database or ask for Help. What would you like to try?",
-
-    'REPROMPT_MSG': 'So, what would you like to ask?',
-    'NO_QUERY_MSG': 'Sorry, you asked for a query that is not yet implemented. You can ask to perform another query '
-                    'on the data contained in the AIDA database or ask for Help. What would you like to try?',
-
-    'REPROMPT_END_MSG': 'You could ask me for another query or say stop to quit',
-    'NO_SENSE_MSG': 'I\'m sorry but the query resulting from the chosen options doesn\'t make sense. Try again. You '
-                    'can ask to perform another query on the data contained in the AIDA database or ask for Help. '
-                    'What would you like to try?',
-
-    'LIST_WRONG_NUMBER_MSG': 'The number ${num} , you should tell me a number higher than one and smaller than eleven.',
-    'LIST_SUBJECT_REQUEST_MSG': 'I can list papers, authors, conferences, organizations and topics. What do you want '
-                                'me to list?',
-    'LIST_SUBJECT_WRONG_MSG': 'Sorry, I can\'t list ${sub}. I can list papers, authors, conferences, organizations '
-                              'and topics. What do you prefer?',
-    'LIST_SUBJECT_REQUEST_REPROMPT_MSG': 'I can list papers, authors, conferences, organizations and topics. What do '
-                                         'you prefer?',
-    'LIST_ORDER_MSG': 'Which sorting option do you prefer between: (1) publications, (2) citations, '
-                      '(3) publications in the last 5 years, (4) citations in the last 5 years?',
-    'LIST_PAPERS_ORDER_MSG': 'Which sorting option do you prefer between: (1) citations and (2) citations in the last '
-                             '5 years?',
-    'LIST_PAPERS_ORDER_WRONG_MSG': 'Sorry, I can\'t list ${sub} sorted by ${order}. I can sort them by: (1) citations '
-                                   'and (2) citations in the last 5 years. What do you prefer?',
-    'LIST_ORDER_WRONG_MSG': 'Sorry, I can\'t list ${sub} sorted by ${order}. I can sort them by: (1) publications, '
-                            '(2) publications in the last 5 years, (3) citations, (4) citations in the last 5 years. '
-                            'What do you prefer?',
-    'LIST_INSTANCE_MSG': 'what is the name of the ${list} for which ${sub} should be in the top ${num}? You can say '
-                         'all for the full list',
-    'LIST_INTENT_CONFIRMATION_1_MSG': 'Do you want to know which are the top ${num} ${sub} ${prep} ${obj}, by number '
-                                      'of ${order}, in the AIDA database?',
-    'LIST_INTENT_CONFIRMATION_2_MSG': 'Do you want to know which are the top ${num} ${sub}, by number of ${order}, '
-                                      '${prep} ${ins} ${obj} in the Aida database?',
-    'LIST_QUERY_MSG': 'In the AIDA database, the top ${num} ${sub} ${prep} ${ins} ${obj} - by number of ${order} - ${'
-                      'verb}: ${lst} You can ask to perform another query on the data contained in the AIDA database '
-                      'or ask for Help. What would you like to try?',
-    'LIST_NO_RESULT_MSG': 'In the AIDA database, there are no ${sub} ${prep} ${ins} ${obj}. You can ask to perform '
-                          'another query on the data contained in the AIDA database or ask for Help. What would you '
-                          'like to try?',
-
-    'DSC_TOO_GENERIC_MSG': 'Your search for ${ins} got ${results}. You need to try again and to be more specific. '
-                           'What is the name of the author or conference you want to know about?',
-    'DSC_NO_RESULT_MSG': 'Your search for ${ins} got no result. You need to try again. What is the name of the author '
-                         'or conference you want to know about?',
-    'DESCRIBE_INSTANCE_MSG': 'What is the name of the author or conference you want to know about?',
-    'DESCRIBE_CONFIRM_MSG': 'Do you want to know something about ${ins}?'
-}
-
 count_dict = {
     'sub': {
         'authors': {
@@ -657,8 +575,17 @@ dsc_list = [' is an author', ' affiliated to ', ' affiliated to the ', 'Author r
             'The top organization in industry is: ', 'The top organizations in industry are: ',
             'Publications in the last 5 years: ', 'Number of affiliated authors: ']
 
-session = {'level': 0, 'intent': {'name': '', 'level': 0, 'slots': {}}, 'confirmation': True}
-query_result = {}
+session = {'level': 0, 'intent': {'name': '', 'level': 0, 'slots': {}}, 'confirmation': True, 'answer': ''}
+
+
+def set_session(new_session):
+    global session
+    session = new_session
+
+
+def get_session():
+    global session
+    return session
 
 
 def welcome():
@@ -728,13 +655,11 @@ def setMessage(msg, options=None):
 
     value = value.replace(' . ', '. ')
     value = value.replace(' , ', ', ')
-
-    query_result['answer'] = value
-    return
+    appendMessage(value)
 
 
 def appendMessage(value):
-    query_result['answer'] = value
+    session['answer'] = value
 
 
 def item_question(subject):
@@ -997,7 +922,8 @@ def dsc(query):
 
 def session_reset():
     global session
-    session = {'level': 0, 'intent': {'name': '', 'level': 0, 'slots': {}}, 'confirmation': True}
+    answer = session['answer']
+    session = {'level': 0, 'intent': {'name': '', 'level': 0, 'slots': {}}, 'confirmation': True, 'answer': answer}
 
 
 def intent_verify(msg):
@@ -1826,10 +1752,10 @@ def main():
     while user_input != 'bye':
         user_input = input('User... ')
         cycle(user_input)
-        answer = query_result['answer']
+        answer = session['answer']
         for i in range(len(tags_list)):
             answer = answer.replace(tags_list[i],'')
-        print ('AIDA-Bot... '+answer)
+        print('AIDA-Bot... '+answer)
 
 
 if __name__ == '__main__':
