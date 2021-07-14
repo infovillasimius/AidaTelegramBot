@@ -12,7 +12,6 @@ from AIDA_Bot import cycle, welcome, get_session, set_session
 bot_id = 'your bot id'
 owner_chat_id = 'your chat id'
 sessions = {}
-new_session = {'level': 0, 'intent': {'name': '', 'level': 0, 'slots': {}}, 'confirmation': True, 'answer': ''}
 
 
 def bot_check():
@@ -86,6 +85,8 @@ if __name__ == '__main__':
                     chat_id = msg['message']['chat'].get('id')
                     session = sessions.get(chat_id)
                     if session is None:
+                        new_session = {'level': 0, 'intent': {'name': '', 'level': 0, 'slots': {}},
+                                       'confirmation': True, 'answer': ''}
                         set_session(new_session)
                     else:
                         set_session(session)
@@ -100,7 +101,7 @@ if __name__ == '__main__':
                     session = get_session()
                     sessions[chat_id] = session
                     answer = session.get('answer')
-
+                    
                     url_answer = 'https://api.telegram.org/' + bot_id + '/sendMessage'
                     url_answer += '?chat_id=' + str(chat_id) + '&text=' + urllib.parse.quote(str(answer))
                     url_answer += '&parse_mode=html'
