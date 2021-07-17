@@ -126,6 +126,88 @@ templates = {
     'DESCRIBE_CONFIRM_MSG': 'Do you want to know something about ${ins}?'
 }
 
+templates2 = {
+    'WELCOME_MSG': ['Hello! You can ask me to describe, list, or count any scholarly entity.',
+                    'Welcome, you can ask me to describe, list, or count any scholarly entity. What would you like to '
+                    'try?'],
+    'HELLO_MSG': ['Hello! What can I do for you?', 'Hi! what could i do for you?'],
+    'OK_MSG': 'Ok',
+    'HELP_MSG': [
+        'You can ask to count or list authors, papers, conferences, organizations, topics and citations or to '
+        'describe authors, conferences and organizations. Start a query with list, count or describe.',
+        'You can ask a query starting with count, list or describe.'],
+    'GOODBYE_MSG': ['Goodbye!', 'Bye!', 'See you later!'],
+    'REFLECTOR_MSG': 'You just triggered ${intent}',
+    'FALLBACK_MSG': 'Sorry, I don\'t know that. Please try again.',
+    'ERROR_MSG': 'Sorry, there was an error. Please try again.',
+
+    'HOMONYMS_MSG': 'I found different homonyms: ${msg} ',
+
+    'SUBJECT_REQUEST_MSG': 'I can count papers, authors, conferences, organizations and citations. What do you want '
+                           'me to count?',
+    'SUBJECT_WRONG_MSG': "Sorry, I can\'t count ${sub}. I can count papers, authors, conferences, organizations and "
+                         "citations. What do you prefer?",
+    'SUBJECT_REQUEST_REPROMPT_MSG': 'I can count papers, authors, conferences, organizations and citations. What do '
+                                    'you prefer?',
+    'INSTANCE_MSG': "what is the name of the ${list} whose ${sub} I should count? You can say all for the full list",
+    'INSTANCE2_MSG': "what is the name of the ${list} whose ${sub} I should count?",
+    'ITEM_MSG': "Searching for ${ins}, I got: ${msg}. To choose, say the number. Which one is correct?",
+    'INTENT_CONFIRMATION_1_MSG': "Do you want to know how many ${sub} ${prep} ${obj} are in the AIDA database?",
+    'INTENT_CONFIRMATION_2_MSG': "Do you want to know how many ${sub} ${prep} ${ins} ${obj} are in the AIDA database?",
+    'TOO_GENERIC_MSG': "Your search for ${ins} got ${results}. You need to try again and to be more specific. Could "
+                       "you tell me the exact name?",
+    'NO_RESULT_MSG': "Your search for ${ins} got no result. You need to try again. What could I search for you?",
+    'QUERY_1_MSG': "I found ${num} ${sub} ${prep} ${ins} ${obj}. You can ask to perform another query on the data "
+                   "contained in the AIDA database or ask for Help. What would you like to try?",
+    'QUERY_2_MSG': "I found ${num} different ${sub} ${prep} ${obj}. You can ask to perform another query on the data "
+                   "contained in the AIDA database or ask for Help. What would you like to try?",
+
+    'REPROMPT_MSG': 'So, what would you like to ask?',
+    'NO_QUERY_MSG': 'Sorry, you asked for a query that is not yet implemented. You can ask to perform another query '
+                    'on the data contained in the AIDA database or ask for Help. What would you like to try?',
+
+    'REPROMPT_END_MSG': 'You could ask me for another query or say stop to quit',
+    'NO_SENSE_MSG': 'I\'m sorry but the query resulting from the chosen options doesn\'t make sense. Try again. You '
+                    'can ask to perform another query on the data contained in the AIDA database or ask for Help. '
+                    'What would you like to try?',
+
+    'LIST_WRONG_NUMBER_MSG': 'The number ${num} , you should tell me a number higher than one and smaller than eleven.',
+    'LIST_SUBJECT_REQUEST_MSG': 'I can list papers, authors, conferences, organizations and topics. What do you want '
+                                'me to list?',
+    'LIST_SUBJECT_WRONG_MSG': 'Sorry, I can\'t list ${sub}. I can list papers, authors, conferences, organizations '
+                              'and topics. What do you prefer?',
+    'LIST_SUBJECT_REQUEST_REPROMPT_MSG': 'I can list papers, authors, conferences, organizations and topics. What do '
+                                         'you prefer?',
+    'LIST_ORDER_MSG': 'Which sorting option do you prefer between: (1) publications, (2) citations, '
+                      '(3) publications in the last 5 years, (4) citations in the last 5 years?',
+    'LIST_PAPERS_ORDER_MSG': 'Which sorting option do you prefer between: (1) citations and (2) citations in the last '
+                             '5 years?',
+    'LIST_PAPERS_ORDER_WRONG_MSG': 'Sorry, I can\'t list ${sub} sorted by ${order}. I can sort them by: (1) citations '
+                                   'and (2) citations in the last 5 years. What do you prefer?',
+    'LIST_ORDER_WRONG_MSG': 'Sorry, I can\'t list ${sub} sorted by ${order}. I can sort them by: (1) publications, '
+                            '(2) publications in the last 5 years, (3) citations, (4) citations in the last 5 years. '
+                            'What do you prefer?',
+    'LIST_INSTANCE_MSG': 'what is the name of the ${list} for which ${sub} should be in the top ${num}? You can say '
+                         'all for the full list',
+    'LIST_INTENT_CONFIRMATION_1_MSG': 'Do you want to know which are the top ${num} ${sub} ${prep} ${obj}, by number '
+                                      'of ${order}, in the AIDA database?',
+    'LIST_INTENT_CONFIRMATION_2_MSG': 'Do you want to know which are the top ${num} ${sub}, by number of ${order}, '
+                                      '${prep} ${ins} ${obj} in the Aida database?',
+    'LIST_QUERY_MSG': 'In the AIDA database, the top ${num} ${sub} ${prep} ${ins} ${obj} - by number of ${order} - ${'
+                      'verb}: ${lst} You can ask to perform another query on the data contained in the AIDA database '
+                      'or ask for Help. What would you like to try?',
+    'LIST_NO_RESULT_MSG': 'In the AIDA database, there are no ${sub} ${prep} ${ins} ${obj}. You can ask to perform '
+                          'another query on the data contained in the AIDA database or ask for Help. What would you '
+                          'like to try?',
+
+    'DSC_TOO_GENERIC_MSG': 'Your search for ${ins} got ${results}. You need to try again and to be more specific. '
+                           'What is the name of the author or conference you want to know about?',
+    'DSC_NO_RESULT_MSG': 'Your search for ${ins} got no result. You need to try again. What is the name of the author '
+                         'or conference you want to know about?',
+    'DESCRIBE_INSTANCE_MSG': 'What is the name of the author or conference you want to know about?',
+    'DESCRIBE_CONFIRM_MSG': 'Do you want to know something about ${ins}?'
+}
+
 count_dict = {
     'sub': {
         'authors': {
@@ -694,12 +776,14 @@ def choice_list(speak):
     message = ''
     n = 0
     cmd = 0 if speak.get('cmd') is not None else 1
-
     for i in range(len(speak['num'])):
         if speak['num'][i] > 0:
             for j in range(len(speak['keys'][i])):
                 message += numbers[n] + ', <b>'
-                message += (speak['keys'][i][j]['name'] if cmd == 0 else speak['keys'][i][j]) + '</b>; '
+                item = speak['keys'][i][j]['name'] if cmd == 0 else speak['keys'][i][j]
+                if (cmd == 1 and i == 3) or (cmd == 0 and i == 0):
+                    item = upper_first(item)
+                message += item + '</b>; '
                 n += 1
             message += ' among the ' + obj_cat[cmd][i] + '. '
     message = message[0: len(message) - 2]
@@ -711,7 +795,10 @@ def homonyms(speak):
     item = speak['item']
     for i in range(len(item)):
         num = 'say <b>' + numbers[i] + '</b> for <b>'
-        msg += num + item[i]['name'] + '</b>'
+        name = item[i]['name']
+        if speak.get('object') == 'authors':
+            name = upper_first(name)
+        msg += num + name + '</b>'
         if item[i].get('affiliation') is not None:
             msg += homonyms_list[0] + item[i]['affiliation'] + "; "
         elif item[i].get('country') is not None:
@@ -820,7 +907,7 @@ def list_elements(lst1, element):
         else:
             msg += '<b>"' + upper_first(lst_[j]) + '"</b>, '
         j += 1
-    return msg[:-2]+'. '
+    return msg[:-2] + '. '
 
 
 def upper_first(str_):
@@ -1133,6 +1220,26 @@ def count_query(msg):
 
         # case k2 (multiple results fnd search)
         if msg['result'] == 'k2':
+
+            num_res = 0
+            for i in range(len(msg['num'])):
+                obj = object_categories[i]
+                if not count_legal_queries[sub][obj][0]:
+                    msg['num'][i] = 0
+                    msg['keys'][i] = []
+                num_res += msg['num'][i]
+            if num_res == 0:
+                setMessage('NO_SENSE_MSG')
+                session_reset()
+                return
+            elif num_res == 1:
+                for i in range(len(msg['num'])):
+                    if msg['num'][i] == 1:
+                        session['intent']['slots']['ins'] = msg['keys'][i][0]
+                        session['intent']['level'] = 0
+                        count_query('')
+                        return
+
             session['intent']['items_list'] = msg
             message = choice_list(msg)
             setMessage('ITEM_MSG', {'ins': ins, 'msg': message})
@@ -1141,6 +1248,12 @@ def count_query(msg):
 
         # case ka(homonyms fnd search)
         if msg['result'] == 'ka':
+            obj = msg['object']
+            if not count_legal_queries[sub][obj][0]:
+                setMessage('NO_SENSE_MSG')
+                session_reset()
+                return
+
             session['intent']['homonyms_list'] = msg
             message = homonyms(msg)
             setMessage('HOMONYMS_MSG', {'msg': message, 'obj': homonyms_objects[msg['obj_id'] - 1]})
@@ -1362,6 +1475,26 @@ def list_query(msg):
 
         # k2 case
         if msg['result'] == 'k2':
+
+            num_res = 0
+            for i in range(len(msg['num'])):
+                obj = object_categories[i]
+                if not count_legal_queries[sub][obj][0]:
+                    msg['num'][i] = 0
+                    msg['keys'][i] = []
+                num_res += msg['num'][i]
+            if num_res == 0:
+                setMessage('NO_SENSE_MSG')
+                session_reset()
+                return
+            elif num_res == 1:
+                for i in range(len(msg['num'])):
+                    if msg['num'][i] == 1:
+                        session['intent']['slots']['ins'] = msg['keys'][i][0]
+                        session['intent']['level'] = 0
+                        count_query('')
+                        return
+
             session['intent']['items_list'] = msg
             message = choice_list(msg)
             setMessage('ITEM_MSG', {'ins': ins, 'msg': message})
@@ -1728,6 +1861,7 @@ def cycle(user_input):
         # print 'transfers control to complex intents depending on the intent name: ', intent, msg
         if intent != 'fallback':
             session['level'] = 0
+            session['confirmation'] = True
             if session['intent'].get('level') is not None:
                 session['intent']['level'] = 0
             if session['intent'].get('homonyms_list') is not None:
@@ -1754,8 +1888,8 @@ def main():
         cycle(user_input)
         answer = session['answer']
         for i in range(len(tags_list)):
-            answer = answer.replace(tags_list[i],'')
-        print('AIDA-Bot... '+answer)
+            answer = answer.replace(tags_list[i], '')
+        print('AIDA-Bot... ' + answer)
 
 
 if __name__ == '__main__':
