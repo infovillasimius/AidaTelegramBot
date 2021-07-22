@@ -3,7 +3,7 @@
 Telegram bot to Explore AIDA Knowledge Graph 
 
 It is part of the project AIDA-Bot Chat (https://github.com/infovillasimius/aidaBot)  and relies on the same data server. 
-It uses Telegram API at https://api.telegram.org/ to retrieve new messages e to reply. 
+It uses Telegram API at https://api.telegram.org/ to retrieve new messages and to reply. 
 The system is currently only able to process text messages.
 In order to use the application you have to create a bot on telegram and get the bot unique identification code, that is used in API requestes.
 Then you have to start a chat with your bot and get your chat unique ID via Telegram API (url = 'https://api.telegram.org/' + bot_id + '/getUpdates')
