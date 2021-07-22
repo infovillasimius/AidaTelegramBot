@@ -286,14 +286,14 @@ count_dict = {
     'obj': {
         'authors': {
             'topics': 'topic',
-            'conferences': 'conferences',
+            'conferences': 'conference',
             'organizations': '',
             'authors': '',
             'papers': ''
         },
         'papers': {
             'topics': 'topic',
-            'conferences': 'conferences',
+            'conferences': 'conference',
             'organizations': '',
             'authors': '',
             'papers': 'papers'
@@ -307,14 +307,14 @@ count_dict = {
         },
         'organizations': {
             'topics': '',
-            'conferences': 'conferences',
+            'conferences': 'conference',
             'organizations': '',
             'authors': 'among their affiliated authors',
             'papers': ''
         },
         'citations': {
             'topics': 'topic',
-            'conferences': 'conferences',
+            'conferences': 'conference',
             'organizations': '',
             'authors': '',
             'papers': ''
@@ -495,14 +495,14 @@ list_dict = {
         'obj': {
             'authors': {
                 'topics': 'topic',
-                'conferences': 'conferences',
+                'conferences': 'conference',
                 'organizations': '',
                 'authors': '',
                 'papers': ''
             },
             'papers': {
                 'topics': 'topic',
-                'conferences': 'conferences',
+                'conferences': 'conference',
                 'organizations': '',
                 'authors': '',
                 'papers': 'papers'
@@ -516,14 +516,14 @@ list_dict = {
             },
             'organizations': {
                 'topics': '',
-                'conferences': 'conferences',
+                'conferences': 'conference',
                 'organizations': '',
                 'authors': 'among their affiliated authors',
                 'papers': ''
             },
             'topics': {
                 'topics': '',
-                'conferences': 'conferences',
+                'conferences': 'conference',
                 'organizations': '',
                 'authors': '',
                 'papers': ''
@@ -608,14 +608,14 @@ list_dict = {
         'obj': {
             'authors': {
                 'topics': 'topics',
-                'conferences': 'conferences',
+                'conferences': 'conference',
                 'organizations': '',
                 'authors': '',
                 'papers': ''
             },
             'papers': {
                 'topics': 'topics',
-                'conferences': 'conferences',
+                'conferences': 'conference',
                 'organizations': '',
                 'authors': '',
                 'papers': 'papers'
@@ -629,14 +629,14 @@ list_dict = {
             },
             'organizations': {
                 'topics': '',
-                'conferences': 'conferences',
+                'conferences': 'conference',
                 'organizations': '',
                 'authors': 'among their affiliated authors',
                 'papers': ''
             },
             'topics': {
                 'topics': '',
-                'conferences': 'conferences',
+                'conferences': 'conference',
                 'organizations': '',
                 'authors': '',
                 'papers': ''
@@ -645,17 +645,16 @@ list_dict = {
     }
 }
 
-dsc_list = [' is an author', ' affiliated to ', ' affiliated to the ', 'Author rating: ', 'Publications: ',
-            'Citations: ', 'Total number of co-authors: ', 'The top topic in terms of publications is: ',
-            'The top topics in terms of publications are: ', 'The top conference in terms of publications is: ',
-            'The top conferences in terms of publications are: ', 'The top journal in terms of publications is: ',
-            'The top journals in terms of publications are: ', ', acronym of ',
-            ', is a conference whose focus areas are: ', 'The rankings are: ', 'Citations in the last 5 years: ',
-            'Years of activity: from ', ' to ', 'Number of publications in the last year: ',
-            'The top country in terms of publications is: ', 'The top countries in terms of publications are: ',
-            'The top organization in education is: ', 'The top organizations in education are: ',
-            'The top organization in industry is: ', 'The top organizations in industry are: ',
-            'Publications in the last 5 years: ', 'Number of affiliated authors: ']
+dsc_list=[' is an author',' affiliated to ',' affiliated to the ','Author rating: ','Publications: ' ,'Citations: ',
+          'Total number of co-authors: ', 'The top topic in terms of publications is: ',
+          'The top topics in terms of publications are: ','The top conference in terms of publications is: ',
+          'The top conferences in terms of publications are: ', 'The top journal in terms of publications is: ',
+          'The top journals in terms of publications are: ',', acronym of ',', is a conference', 'The rankings are: ',
+          'citations in the last 5 years: ','Years of activity: from ',' to ','Number of publications in the last year: ',
+          'The top country in terms of publications is: ', 'The top countries in terms of publications are: ',
+          'The top organization in education is: ', 'The top organizations in education are: ',
+          'The top organization in industry is: ', 'The top organizations in industry are: ',
+          'publications in the last 5 years: ','number of affiliated authors: ',', active between ',' whose main topics are: ']
 
 session = {'level': 0, 'intent': {'name': '', 'level': 0, 'slots': {}}, 'confirmation': True, 'answer': ''}
 
@@ -675,11 +674,15 @@ def welcome():
 
 
 def get_data(cmd, ins):
-    response = urllib.request.urlopen(data_server_url + cmd + urllib.parse.quote(str(ins)))
-    data = json.load(response)
-    # print data
-    assert isinstance(data, dict)
-    return data
+    try:
+        response = urllib.request.urlopen(data_server_url + cmd + urllib.parse.quote(str(ins)))
+        data = json.load(response)
+        assert isinstance(data, dict)
+        return data
+    except:
+        session_reset()
+        setMessage('ERROR_MSG')
+        return {}
 
 
 def getIntent(msg):
@@ -953,15 +956,16 @@ def dsc(query):
             msg += list_elements(item['top_journals'], 'name')
     elif query['obj_id'] == 2 or query['obj_id'] == 3:
         msg += '<b>' + item['acronym'] + '</b>' + dsc_list[13] + '<b>' + item['name'] + '</b>' + dsc_list[14]
+        if item.get('activity_years') is not None:
+            msg += dsc_list[28] + '<b>' + str(item['activity_years']['from']) + '</b>'
+            msg += ' and ' + '<b>' + str(item['activity_years']['to']) + '</b>. '
+        msg += dsc_list[29]
         msg += list_elements(item['topics'], '')
         msg += dsc_list[15]
         if item.get('h5_index') is not None:
             msg += 'h5-index: ' + '<b>' + str(item['h5_index']) + '</b>. '
         if item.get('citationcount_5') is not None:
             msg += dsc_list[16] + '<b>' + str(item['citationcount_5']) + '</b>. '
-        if item.get('activity_years') is not None:
-            msg += dsc_list[17] + '<b>' + str(item['activity_years']['from']) + '</b>'
-            msg += dsc_list[18] + '<b>' + str(item['activity_years']['to']) + '</b>. '
         if item.get('last_year_publications') is not None and item['last_year_publications'] > 0:
             msg += dsc_list[19] + '<b>' + str(item['last_year_publications']) + '</b>. '
         if len(item['top_3_country']) > 0:
@@ -1029,10 +1033,12 @@ def intent_verify(msg):
         setMessage('GOODBYE_MSG')
         session_reset()
     elif intent == 'count' or intent == 'list':
+        session_reset()
         session['level'] = 1
         setIntentSlots(get_data('cmd=parser&ins=', str(msg)))
 
     elif intent == 'describe':
+        session_reset()
         session['intent']['name'] = 'describe'
         session['level'] = 1
         query = getUserDescribeQueryText(msg)
@@ -1860,14 +1866,6 @@ def cycle(user_input):
         intent = getIntent(msg)[0]
         # print 'transfers control to complex intents depending on the intent name: ', intent, msg
         if intent != 'fallback':
-            session['level'] = 0
-            session['confirmation'] = True
-            if session['intent'].get('level') is not None:
-                session['intent']['level'] = 0
-            if session['intent'].get('homonyms_list') is not None:
-                del session['intent']['homonyms_list']
-            if session['intent'].get('items_list') is not None:
-                del session['intent']['items_list']
             intent_verify(msg)
             return
         if session['intent']['name'] == 'count':
