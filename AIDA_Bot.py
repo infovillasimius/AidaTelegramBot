@@ -958,7 +958,7 @@ def dsc(query):
         msg += '<b>' + item['acronym'] + '</b>' + dsc_list[13] + '<b>' + item['name'] + '</b>' + dsc_list[14]
         if item.get('activity_years') is not None:
             msg += dsc_list[28] + '<b>' + str(item['activity_years']['from']) + '</b>'
-            msg += ' and ' + '<b>' + str(item['activity_years']['to']) + '</b>. '
+            msg += ' and ' + '<b>' + str(item['activity_years']['to']) + '</b>, '
         msg += dsc_list[29]
         msg += list_elements(item['topics'], '')
         msg += dsc_list[15]
