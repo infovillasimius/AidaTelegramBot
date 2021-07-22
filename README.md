@@ -8,7 +8,6 @@ The system is currently only able to process text messages.
 
 In order to use the application you have to create a bot on telegram and get the bot unique identification code, that is used in API requestes.
 Then you have to start a chat with your bot and get your chat unique ID via Telegram API (url = 'https://api.telegram.org/' + bot_id + '/getUpdates').
-
 The bot ID and chat ID have to be set in the application code (bot_id = 'your bot id' and owner_chat_id = 'your chat id').
 
 The application checks every ten minutes if the server is working and if not, it sends you a telegram message.
