@@ -1485,7 +1485,7 @@ def list_query(msg):
             num_res = 0
             for i in range(len(msg['num'])):
                 obj = object_categories[i]
-                if not count_legal_queries[sub][obj][0]:
+                if not is_list_legal(sub,obj):
                     msg['num'][i] = 0
                     msg['keys'][i] = []
                 num_res += msg['num'][i]
