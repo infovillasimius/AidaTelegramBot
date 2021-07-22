@@ -12,6 +12,8 @@ The bot ID and chat ID have to be set in the application code (bot_id = 'your bo
 
 The application checks every ten minutes if the server is working and if not, it sends you a telegram message.
 
+On a Linux system you can run telegram_botd.py which starts the application as a daemon.
+
 The database can be queried about authors, papers, conferences, organizations, citations and topics. It is possible to further filter the queries by specifying the name of a particular topic, conference, organization or author. The results can be sorted according to one of the following four options: publications, citations, publications in the last 5 years, citations in the last 5 years There are three types of queries:
 Describe (e.g .: "describe ISWC")
 Count (e.g .: "count the papers on machine learning")
