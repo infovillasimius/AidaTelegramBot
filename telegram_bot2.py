@@ -7,10 +7,10 @@ from time import sleep
 import time
 from datetime import datetime
 
-from AIDA_Bot import cycle, welcome, get_session, set_session
+from AIDA_Bot import AidaBot
 
-bot_id = 'your bot id'
-owner_chat_id = 'your chat id'
+bot_id = 'your_bot_id'
+owner_chat_id = 'your_chat_id'
 sessions = {}
 
 
@@ -67,12 +67,13 @@ def get_updates(update_id):
         return None
     except:
         print("An exception occurred")
-        url3 = 'https://api.telegram.org/' + bot_id + '/sendMessage?chat_id=' + chat_id + '?text=Exception_error'
+        url3 = 'https://api.telegram.org/' + bot_id + '/sendMessage?chat_id=' + owner_chat_id + '?text=Exception_error'
         zr = urllib.request.urlopen(url3, context=ssl.SSLContext())
         return None
 
 
 if __name__ == '__main__':
+    bot = AidaBot()
     p = Process(target=bot_check, args=())
     p.start()
     upd_id = None
@@ -87,21 +88,21 @@ if __name__ == '__main__':
                     if session is None:
                         new_session = {'level': 0, 'intent': {'name': '', 'level': 0, 'slots': {}},
                                        'confirmation': True, 'answer': ''}
-                        set_session(new_session)
+                        bot.set_session(new_session)
                     else:
-                        set_session(session)
+                        bot.set_session(session)
                     text = msg['message'].get('text')
                     if text is None:
                         text = ''
                     elif text[0] == '/':
-                        welcome()
+                        bot.welcome()
                     else:
-                        cycle(text)
+                        bot.cycle(text)
 
-                    session = get_session()
+                    session = bot.get_session()
                     sessions[chat_id] = session
-                    answer = session.get('answer')
-                    
+                    answer = session.get('answer').replace('<br/>', '')
+                    print(answer)
                     url_answer = 'https://api.telegram.org/' + bot_id + '/sendMessage'
                     url_answer += '?chat_id=' + str(chat_id) + '&text=' + urllib.parse.quote(str(answer))
                     url_answer += '&parse_mode=html'
