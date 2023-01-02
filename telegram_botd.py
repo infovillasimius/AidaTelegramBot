@@ -47,9 +47,9 @@ def bot_check():
 
         except:
             print("An exception occurred")
-            msg_url = base_url + 'Exception_error'
-            zr = urllib.request.urlopen(msg_url, context=ssl.SSLContext())
-            time.sleep(60)
+            # msg_url = base_url + 'Exception_error'
+            # zr = urllib.request.urlopen(msg_url, context=ssl.SSLContext())
+            time.sleep(360)
 
 
 def get_updates(update_id):
@@ -69,8 +69,8 @@ def get_updates(update_id):
         return None
     except:
         print("An exception occurred")
-        url3 = 'https://api.telegram.org/' + bot_id + '/sendMessage?chat_id=' + owner_chat_id + '?text=Exception_error'
-        zr = urllib.request.urlopen(url3, context=ssl.SSLContext())
+        # url3 = 'https://api.telegram.org/' + bot_id + '/sendMessage?chat_id=' + owner_chat_id + '?text=Exception_error'
+        # zr = urllib.request.urlopen(url3, context=ssl.SSLContext())
         return None
 
 

@@ -57,7 +57,8 @@ class AidaBot:
                                                                     '<b>list</b>, or <b>describe</b>.'],
             'GOODBYE_MSG': ['Goodbye!', 'Bye!', 'See you later!'],
 
-            'FALLBACK_MSG': 'Sorry, I don\'t know that. Please try again.',
+            'FALLBACK_MSG': "Sorry, I don't know that. Please try again. You can enter one of the activation keys (count, list, describe or compare) to start the wizard that will help you formulate your query.",
+
             'ERROR_MSG': 'Sorry, there was an error. Please try again.',
 
             'HOMONYMS_MSG': 'I found different homonyms (list sorted by number of publications): ${msg} ',
